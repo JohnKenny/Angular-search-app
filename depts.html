@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular App</title>
+    <style>
+        body {
+            background-color: aqua;
+            font: 14px bold helvetica, arial, sans-serif;
+        }
+        input {
+            padding: 10px;
+        }
+        #list-container{
+            background-color: white;
+            color: blueviolet;
+            border-radius: 25px;
+            border: .5px solid black;
+            padding: 25px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.4-build.3588/angular.js"></script>
+</head>
+<body ng-app>
+    <p>Search Depts: <input type="text" placeholder="Enter a search term" ng-model="searchString"></p>
+    <div ng-init = "departments = [
+    { name: 'Sales', contact: 'Ms Margery'},
+    { name: 'Support', contact: 'Mr Price'},
+    { name: 'Production', contact: 'Mr Wales'},
+    { name: 'Admin', contact: 'Sally Bennett'}
+    ]"></div>
+
+    <div id="list-container">
+        <ul>
+            <li ng-repeat="dept in departments | filter: searchString" >
+                {{dept.name + " (" + dept.contact + ")"}}
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
